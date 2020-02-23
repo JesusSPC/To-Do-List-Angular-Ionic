@@ -1,0 +1,30 @@
+<ion-list color="dark" #list>
+  <ion-item-sliding *ngFor="let list of toDoService.listas | completedFilter:finished "
+  >
+  <ion-item-options side="start">
+    <ion-item-option (click)="editList(list)" color="tertiary">
+      <ion-icon name="pencil-sharp" slot="icon-only"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+
+    <ion-item
+      color="dark"
+      detail
+      (click)="selectedList(list)"
+    >
+      <ion-label>
+        {{ list.title }}
+      </ion-label>
+
+      <ion-note color="tertiary" slot="end"
+        >{{ list.items.length }} items</ion-note
+      >
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option (click)="deleteList(list)" color="danger">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
